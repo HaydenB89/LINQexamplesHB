@@ -31,11 +31,11 @@ namespace LINQexamplesHB {
             };
 
             List<Order> orders = new List<Order>() {
-                new Order(){ Id = 1, Descriotion = "1st Order",
+                new Order(){ Id = 1, Description = "1st Order",
                             Total = 1000, CustomerId = 2},
-                new Order(){ Id = 2, Descriotion = "2st Order",
+                new Order(){ Id = 2, Description = "2st Order",
                             Total = 2000, CustomerId = 5},
-                new Order(){ Id = 3, Descriotion = "3st Order",
+                new Order(){ Id = 3, Description = "3st Order",
                             Total = 3000, CustomerId = 1}
             };
 
@@ -45,12 +45,12 @@ namespace LINQexamplesHB {
                                  orderby o.Total descending
                                  select new {
                                      o.Id,                       //SELECT shows the folloing from called 
-                                     o.Descriotion,              // class (o. or c. in this case)
+                                     o.Description,              // class (o. or c. in this case)
                                      Amount = o.Total,
                                      Customer = c.Name
                                  };
             foreach(var co in customerOrders) {
-                Console.WriteLine($"{co.Id,-5}{co.Descriotion,-30}" +      //the numbers in the parameters are the 
+                Console.WriteLine($"{co.Id,-5}{co.Description,-30}" +      //the numbers in the parameters are the 
                                   $"{co.Amount,7:c}{co.Customer,25}");     //characters length that space out the lines
             }
 
