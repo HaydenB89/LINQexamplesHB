@@ -1,9 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;  //dont foget to add this
 
 namespace LINQexamplesHB {
     class Program {
         static void Main(string[] args) {
+
+            List<Customers> customers = new List<Customers>() {
+                new Customers() {Id = 1, Name = "MAX", Sales = 1000},
+                new Customers() {Id = 2, Name = "P&G", Sales = 2000},
+                new Customers() {Id = 3, Name = "Microsoft", Sales = 3000},
+                new Customers() {Id = 4, Name = "Amazon", Sales = 4000},
+                new Customers() {Id = 5, Name = "Google", Sales = 5000}
+            };
+
+
+
             int[] numbers = { 23, 28, 225, 35, 500, 22, 15,
                               -63, 7, 88, 53, -1, 12, 17 };
 
@@ -25,7 +37,7 @@ namespace LINQexamplesHB {
                 Console.WriteLine($"odd: {n1}");                                                                                                    
             }
 
-            var querynbrs = from n in numbers                   //query mode starts with 'var' and
+            var querynbrs = from n in numbers                   //query mode starts with 'var' as SELECT and
                             where n < 200                        //is stated by '= from' (SQL adjacent)
                             orderby n
                             select n;
