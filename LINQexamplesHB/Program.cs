@@ -39,6 +39,21 @@ namespace LINQexamplesHB {
                             Total = 3000, CustomerId = 1}
             };
 
+            var customerOrders = from o in orders
+                                 join c in customers             //join like SQL
+                                 on o.CustomerId equals c.Id     //DIFFERENT FRO SQL !! join on the FROM variable -(o) in this case
+                                 orderby o.Total descending
+                                 select new {
+                                     o.Id,                       //SELECT shows the folloing from called 
+                                     o.Descriotion,              // class (o. or c. in this case)
+                                     Amount = o.Total,
+                                     Customer = c.Name
+                                 };
+            foreach(var co in customerOrders) {
+                Console.WriteLine($"{co.Id,-5}{co.Descriotion,-30}" +      //the numbers in the parameters are the 
+                                  $"{co.Amount,7:c}{co.Customer,25}");     //characters length that space out the lines
+            }
+
             var orderedCustomers = from c in customers
                                    orderby c.Sales descending
                                    select new {
